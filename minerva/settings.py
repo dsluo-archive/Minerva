@@ -24,10 +24,7 @@ SECRET_KEY = 'rknmo)^+$wtd(s_axj!guz+*lc8=*xq4z0v==h+2uehyet*v=2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    'localhost',
-    're-ddit.com'
-]
+ALLOWED_HOSTS = []
 
 # Application definition
 
