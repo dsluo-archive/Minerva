@@ -1,8 +1,11 @@
+from django.core.exceptions import ValidationError
 from django.core.validators import validate_comma_separated_integer_list
 from django.db import models
 
-
 # Create your models here.
+from django.utils.translation import gettext_lazy
+
+
 class Address(models.Model):
     line_one = models.CharField(max_length=255)
     line_two = models.CharField(max_length=255)
@@ -55,6 +58,14 @@ class Campus(models.Model):
     location = models.ForeignKey(Location, models.CASCADE)
 
 
+def validate_lowercase(value):
+    if not value.islower():
+        raise ValidationError(
+            gettext_lazy('%(value)s is not lowercase.'),
+            params={'value': value}
+        )
+
+
 class Session(models.Model):
     klass = models.ForeignKey(Class, models.CASCADE)
     location = models.ForeignKey(Location, models.CASCADE)
@@ -70,7 +81,7 @@ class Session(models.Model):
     # may = maymester
     # s1 = short session 1
     # s2 = short session 2
-    session = models.CharField(max_length=3, validators=[str.islower])
+    session = models.CharField(max_length=3, validators=[validate_lowercase])
 
     max_seats = models.PositiveSmallIntegerField()
     filled_seats = models.PositiveSmallIntegerField()
