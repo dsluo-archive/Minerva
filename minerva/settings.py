@@ -35,6 +35,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'base',
+    'main'
 ]
 
 MIDDLEWARE = [
@@ -65,7 +67,7 @@ TEMPLATES = [
     },
     {
         'BACKEND':  'django.template.backends.jinja2.Jinja2',
-        'DIRS':     [os.path.join(BASE_DIR, 'templates')],
+        'DIRS':     [os.path.join(BASE_DIR, 'jinja2')],
         'APP_DIRS': True,
         'OPTIONS':  {
             'environment': 'minerva.jinja2.environment'
