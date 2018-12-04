@@ -20,7 +20,7 @@ class Building(models.Model):
 
 
 class Location(models.Model):
-    building = models.ForeignKey(Building, models.CASCADE, unique=True)
+    building = models.ForeignKey(Building, models.CASCADE)
     room = models.PositiveSmallIntegerField(unique=True)
 
 
@@ -32,9 +32,6 @@ class SubjectArea(models.Model):
 
 
 class Course(models.Model):
-    class Meta:
-        unique_together = (('subject_area', 'course_number'),)
-
     subject_area = models.ManyToManyField(SubjectArea)
     course_number = models.CharField(max_length=255)
 
