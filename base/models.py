@@ -1,15 +1,18 @@
+from django.core.exceptions import ValidationError
 from django.core.validators import validate_comma_separated_integer_list
 from django.db import models
 
-
 # Create your models here.
+from django.utils.translation import gettext_lazy
+
+
 class Address(models.Model):
-    line_one = models.CharField()
-    line_two = models.CharField()
-    city = models.CharField()
+    line_one = models.CharField(max_length=255)
+    line_two = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
-    country = models.CharField()
+    country = models.CharField(max_length=255)
 
 
 class Building(models.Model):
@@ -24,13 +27,13 @@ class Location(models.Model):
 
 class SubjectArea(models.Model):
     short = models.CharField(max_length=4)
-    long = models.CharField()
+    long = models.CharField(max_length=255)
 
     department = None  # todo
 
 
 class Class(models.Model):
-    crn = models.CharField(primary_key=True, validators=[validate_comma_separated_integer_list])
+    crn = models.CharField(primary_key=True, validators=[validate_comma_separated_integer_list], max_length=255)
     subject_area = models.ManyToManyField(SubjectArea)
 
     lab = models.BooleanField(default=False)
@@ -51,8 +54,16 @@ class MeetingTime(models.Model):
 
 
 class Campus(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=255)
     location = models.ForeignKey(Location, models.CASCADE)
+
+
+def validate_lowercase(value):
+    if not value.islower():
+        raise ValidationError(
+            gettext_lazy('%(value)s is not lowercase.'),
+            params={'value': value}
+        )
 
 
 class Session(models.Model):
@@ -70,7 +81,7 @@ class Session(models.Model):
     # may = maymester
     # s1 = short session 1
     # s2 = short session 2
-    session = models.CharField(max_length=3, validators=[str.islower])
+    session = models.CharField(max_length=3, validators=[validate_lowercase])
 
     max_seats = models.PositiveSmallIntegerField()
     filled_seats = models.PositiveSmallIntegerField()
