@@ -23,7 +23,7 @@ Requirements:
     * (3) Add class to schedule, if there are no issues with registering for it.
     * (6) Prerequisite tree view - shows prerequisites required for a class in a dependency tree.
 * (10) **Database**
-        * Models representing:
+    * Models representing:
         * (3.3) Courses
             * CRN
             * Subject Area
