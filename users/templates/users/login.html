@@ -23,7 +23,7 @@
             <div class="alert alert-danger">{{ error }}</div>
         {% endfor %}
 
-        <div class="form-label-group">
+        <div class="form-group">
             <label for="{{ form.username.id_for_label }}">Username</label>
             {{ form.username|add_class:'form-control' }}
             {% if form.username.help_text %}
@@ -31,7 +31,7 @@
             {% endif %}
             {{ form.username.errors }}
         </div>
-        <div class="form-label-group">
+        <div class="form-group">
             <label for="{{ form.password.id_for_label }}">Password</label>
             {{ form.password|add_class:'form-control' }}
             {% if form.password.help_text %}
