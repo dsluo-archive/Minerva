@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block content %}
+    <form class="form-signin" method="post">
+        {% csrf_token %}
+        <div class="text-center mb-4">
+            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        </div>
+        {{ form.non_field_errors }}
+
+        <div class="form-label-group">
+            {{ form.username|add_class:'form-control'|append_attr:'placeholder="Email address"' }}
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username.errors }}
+        </div>
+        <div class="form-label-group">
+            {{ form.password1|add_class:'form-control'|append_attr:'placeholder="Password"' }}
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            {{ form.password1.errors }}
+        </div>
+        <div class="form-label-group">
+            {{ form.password2|add_class:'form-control'|append_attr:'placeholder="Password"' }}
+            <label for="{{ form.password2.id_for_label }}">Password</label>
+            {{ form.password2.errors }}
+        </div>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+    </form>
+{% endblock %}
