@@ -1,30 +1,43 @@
 {% extends 'base.html' %}
 
 {% load widget_tweaks %}
-{# Adaptation of https://getbootstrap.com/docs/4.1/examples/floating-labels/ #}
-{# by CC-BY #}
+{% load static %}
 
 {% block title %}
     Login
 {% endblock %}
 
+{% block appendhead %}
+    <link rel="stylesheet" href="{% static 'users/css/forms.css' %}">
+{% endblock %}
+
 {% block content %}
     <form class="form-signin" method="post">
         {% csrf_token %}
+
         <div class="text-center mb-4">
             <h1 class="h3 mb-3 font-weight-normal">Login</h1>
         </div>
-        {{ form.non_field_errors }}
+
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endfor %}
 
         <div class="form-label-group">
-            {{ form.username.errors }}
-            {{ form.username|add_class:'form-control'|append_attr:'placeholder="Email address"' }}
             <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username|add_class:'form-control' }}
+            {% if form.username.help_text %}
+                <small class="form-text text-muted">{{ form.username.help_text }}</small>
+            {% endif %}
+            {{ form.username.errors }}
         </div>
         <div class="form-label-group">
-            {{ form.password.errors }}
-            {{ form.password|add_class:'form-control'|append_attr:'placeholder="Password"' }}
             <label for="{{ form.password.id_for_label }}">Password</label>
+            {{ form.password|add_class:'form-control' }}
+            {% if form.password.help_text %}
+                <small class="form-text text-muted">{{ form.password.help_text }}</small>
+            {% endif %}
+            {{ form.password.errors }}
         </div>
         <div class="checkbox mb-3">
             <label>
