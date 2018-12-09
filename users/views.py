@@ -1,8 +1,9 @@
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
-from users.forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm
 
 
 def register(request: HttpRequest):
@@ -18,3 +19,8 @@ def register(request: HttpRequest):
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
+
+
+@login_required
+def settings(request: HttpRequest):
+    return render(request, 'users/settings.html')
