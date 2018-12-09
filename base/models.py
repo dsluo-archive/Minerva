@@ -30,6 +30,9 @@ class SubjectArea(models.Model):
 
     department = None  # todo
 
+    def __str__(self):
+        return 'Subject Area: ' + self.long
+
 
 class Course(models.Model):
     subject_area = models.ManyToManyField(SubjectArea)
