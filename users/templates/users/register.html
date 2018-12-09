@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base/base.html' %}
 
 {% load widget_tweaks %}
 {% load static %}
@@ -12,35 +12,37 @@
 {% endblock %}
 
 {% block content %}
-    <form class="form-signin" method="post">
-        {% csrf_token %}
+    <div class="d-flex justify-content-center align-items-center h-100">
+        <form class="form-signin" method="post">
+            {% csrf_token %}
 
-        <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">Register</h1>
-        </div>
+            <div class="text-center mb-4">
+                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+            </div>
 
-        {% for error in form.non_field_errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
 
-        <div class="form-group">
-            <label for="{{ form.username.id_for_label }}">Username</label>
-            {{ form.username|add_class:'form-control' }}
-            <small class="form-text text-muted">{{ form.username.help_text }}</small>
-            {{ form.username.errors }}
-        </div>
-        <div class="form-group">
-            <label for="{{ form.password1.id_for_label }}">Password</label>
-            {{ form.password1|add_class:'form-control' }}
-            <small class="form-text text-muted">{{ form.password1.help_text }}</small>
-            {{ form.password1.errors }}
-        </div>
-        <div class="form-group mb-2">
-            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
-            {{ form.password2|add_class:'form-control' }}
-            <small class="form-text text-muted">{{ form.password2.help_text }}</small>
-            {{ form.password2.errors }}
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
-    </form>
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username|add_class:'form-control' }}
+                <small class="form-text text-muted">{{ form.username.help_text }}</small>
+                {{ form.username.errors }}
+            </div>
+            <div class="form-group">
+                <label for="{{ form.password1.id_for_label }}">Password</label>
+                {{ form.password1|add_class:'form-control' }}
+                <small class="form-text text-muted">{{ form.password1.help_text }}</small>
+                {{ form.password1.errors }}
+            </div>
+            <div class="form-group mb-2">
+                <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+                {{ form.password2|add_class:'form-control' }}
+                <small class="form-text text-muted">{{ form.password2.help_text }}</small>
+                {{ form.password2.errors }}
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        </form>
+    </div>
 {% endblock %}

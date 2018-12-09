@@ -57,7 +57,7 @@ ROOT_URLCONF = 'minerva.urls'
 TEMPLATES = [
     {
         'BACKEND':  'django.template.backends.django.DjangoTemplates',
-        'DIRS':     [os.path.join(BASE_DIR, 'templates')],
+        'DIRS':     [],
         'APP_DIRS': True,
         'OPTIONS':  {
             'context_processors': [
@@ -65,6 +65,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'base.context_processors.navbar_context'
             ],
         }
     }
