@@ -11,6 +11,31 @@
     {% block appendhead %}{% endblock %}
 </head>
 <body>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'main:index' %}">Minerva</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+                {% for name, path in pages.items %}
+                    <li class="nav-item">
+                        {% if request.get_full_path == path %}
+                            <a class="nav-link active" href="{{ path }}">
+                                {{ name }} <span class="sr-only">(current)</span>
+                            </a>
+                        {% else %}
+                            <a class="nav-link" href="{{ path }}">{{ name }}</a>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+</div>
 {% block content %}
 
 {% endblock %}
