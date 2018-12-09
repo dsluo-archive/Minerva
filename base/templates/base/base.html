@@ -32,8 +32,8 @@
                         {% endif %}
                     </li>
                 {% endfor %}
-                <li class="nav-item">
-                    {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
                         {% url 'main:users:logout' as logout %}
                         {% if request.get_full_path == logout %}
                             <a class="nav-link active" href="{{ logout }}">
@@ -42,7 +42,9 @@
                         {% else %}
                             <a class="nav-link" href="{{ logout }}">Logout</a>
                         {% endif %}
-                    {% else %}
+                    </li>
+                {% else %}
+                    <li class="nav-item">
                         {% url 'main:users:login' as login %}
                         {% if request.get_full_path == login %}
                             <a class="nav-link active" href="{{ login }}">
@@ -51,8 +53,10 @@
                         {% else %}
                             <a class="nav-link" href="{{ login }}">Login</a>
                         {% endif %}
-                    {% endif %}
-                </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{% url 'main:users:register' %}">Register</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>
