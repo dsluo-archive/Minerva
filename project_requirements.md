@@ -11,7 +11,7 @@ Requirements:
 * (10) **General frontend**
     * (3.3) Responsive - the page adapts to display sizes.
     * (3.3) Modern design - CSS, the whole shebang. Pretty, please.
-    * (3.3) Templates - the project uses Jinja2 templates.
+    * (3.3) Templates - the project uses ~~Jinja2~~ Django templates.
 * (20) Implement a **Schedule View** that displays currently planned classes and potential new classes. For student users, this is the main view of the website.
     * (6) Main interface.
     * (4) List of available classes, retrieved by AJAX.
