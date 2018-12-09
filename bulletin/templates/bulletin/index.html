@@ -1,5 +1,5 @@
 <h1>Bulletin Index</h1>
 
 {% for subject in list_of_subjects %}
-<p>{{subject.long}}</p>
+<a href="/bulletin/{{subject.short}}/">{{subject.long}}</a><br>
 {% endfor %}
