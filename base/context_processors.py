@@ -9,10 +9,4 @@ def navbar_context(request: HttpRequest):
             'Schedule': 'TODO',
         }
     }
-
-    if request.user.is_authenticated:
-        context['pages']['Login'] = reverse('main:users:login')
-    else:
-        context['pages']['Logout'] = reverse('main:users:logout')
-
     return context
