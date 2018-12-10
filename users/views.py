@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 
 def register(request: HttpRequest):
@@ -23,4 +23,11 @@ def register(request: HttpRequest):
 
 @login_required
 def settings(request: HttpRequest):
-    return render(request, 'users/settings.html')
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+
+    return render(request, 'users/settings.html', {'form': form})
