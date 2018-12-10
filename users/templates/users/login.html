@@ -1,6 +1,5 @@
 {% extends 'base/base.html' %}
 
-{% load widget_tweaks %}
 {% load static %}
 
 {% block title %}
@@ -13,36 +12,6 @@
 
 {% block content %}
     <div class="d-flex justify-content-center align-items-center h-100">
-        <form class="form-signin" method="post">
-            {% csrf_token %}
-
-            <div class="text-center mb-4">
-                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-            </div>
-
-            {% for error in form.non_field_errors %}
-                <div class="alert alert-danger">{{ error }}</div>
-            {% endfor %}
-
-            {% for field in form %}
-                <div class="form-group">
-                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    {{ field|add_class:'form-control' }}
-                    {% if field.help_text %}
-                        <small class="from-text text-muted">{{ field.help_text }}</small>
-                    {% endif %}
-                    {{ field.errors }}
-                </div>
-            {% endfor %}
-            {# TODO: make this actually do somehting #}
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="rememberMe">
-                <label class="form-check-label" for="rememberMe">
-                    Remember me
-                </label>
-            </div>
-            <a class="form-text mb-3" href="{% url 'users:password_reset' %}">Forgot password?</a>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
+        {% include 'forms.html' with form_title='Login' form_submit='Login'%}
     </div>
 {% endblock %}
