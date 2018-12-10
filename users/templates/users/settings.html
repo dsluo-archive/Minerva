@@ -10,24 +10,14 @@
     <form class="form-signin" method="post">
         {% csrf_token %}
 
-        <div class="text-center mb-4">
-            <h1 class="h3 mb-3 font-weight-normal">User Settings</h1>
-        </div>
+        {% include 'forms/form_title.html' with form_title='User Settings' %}
 
-        {% for error in form.non_field_errors %}
-            <div class="alert alert-danger">{{ error }}</div>
-        {% endfor %}
+        {% include 'forms/form_errors.html' with form=settings_form %}
+        {% include 'forms/form_errors.html' with form=password_form %}
 
-        {% for field in form %}
-            <div class="form-group">
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field|add_class:'form-control' }}
-                {% if field.help_text %}
-                    <small class="from-text text-muted">{{ field.help_text|safe }}</small>
-                {% endif %}
-                {{ field.errors }}
-            </div>
-        {% endfor %}
+        {% include 'forms/form_fields.html' with form=settings_form %}
+        {% include 'forms/form_fields.html' with form=password_form %}
+
         <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
     </form>
 {% endblock %}
