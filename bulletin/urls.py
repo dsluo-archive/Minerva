@@ -8,5 +8,5 @@ app_name = 'bulletin'
 urlpatterns = [
     path('', index, name='bulletin_index'),
     path('<str:subject_short>/', subject, name="bulletin_subject"),
-    path('<str:subject>/<int:course>/', course, name='bulletin_course')
+    path('<str:subject_short>/<int:course_number>/', course, name='bulletin_course')
 ]

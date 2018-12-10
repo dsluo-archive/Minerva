@@ -47,6 +47,34 @@ def subject(request, subject_short):
         return render(request, 'bulletin/subject.html', context)
 
 
-def course(request, subject, course):
+# Displays the details page for a single subject.
+def course(request, subject_short, course_number):
+
+    # Attempt to retrieve the subject object corresponding to the value passed
+    # into the function by the URL.
+
+    # If the subject doesn't exist...
+
+        # Create a dictionary with an error string.
+
+        # Render the template with the dictionary. Error string will be displayed.
+
+    # Else...
+
+        # Retrieve all Courses categorized under that Subject Area.
+
+        # If the course doesn't exist...
+
+            # Create a dictionary with an error string.
+
+            # Render the template with the dictionary. Error string will be
+            # displayed.
+
+        # Else...
+
+            # Create a dictionary containing the course object.
+
+            # Pass the object into the template for the course view page.
+
     return render(request, 'bulletin/course.html')
 
