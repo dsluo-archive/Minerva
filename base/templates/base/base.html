@@ -34,7 +34,7 @@
                 {% endfor %}
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        {% url 'main:users:logout' as logout %}
+                        {% url 'users:logout' as logout %}
                         {% if request.get_full_path == logout %}
                             <a class="nav-link active" href="{{ logout }}">
                                 Logout <span class="sr-only">(current)</span>
@@ -45,7 +45,7 @@
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        {% url 'main:users:login' as login %}
+                        {% url 'users:login' as login %}
                         {% if request.get_full_path == login %}
                             <a class="nav-link active" href="{{ login }}">
                                 Login <span class="sr-only">(current)</span>
@@ -54,7 +54,7 @@
                             <a class="nav-link" href="{{ login }}">Login</a>
                         {% endif %}
                     <li class="nav-item">
-                        <a class="btn btn-primary" href="{% url 'main:users:register' %}">Register</a>
+                        <a class="btn btn-primary" href="{% url 'users:register' %}">Register</a>
                     </li>
                 {% endif %}
             </ul>
