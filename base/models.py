@@ -34,7 +34,7 @@ class SubjectArea(models.Model):
     department = None  # todo
 
     def __str__(self):
-        return 'Subject Area: ' + self.long
+        return self.long
 
 
 class Course(models.Model):
@@ -54,7 +54,7 @@ class Course(models.Model):
     max_credit_hours = models.PositiveSmallIntegerField(null=True)
 
     def __str__(self):
-        return 'Course: ' + self.name
+        return self.name
 
 
 class MeetingTime(models.Model):
