@@ -24,7 +24,7 @@ def register(request: HttpRequest):
 @login_required
 def settings(request: HttpRequest):
     if request.method == 'POST':
-        form = CustomUserSettingsForm(request.POST)
+        form = CustomUserSettingsForm(request.POST, instance=request.user)
         if form.has_changed() and form.is_valid():
             form.save()
     else:
