@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
@@ -35,8 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'users.apps.UsersConfig',
     'widget_tweaks',
+    'users',
     'base',
     'main',
     'bulletin',
@@ -57,7 +58,7 @@ ROOT_URLCONF = 'minerva.urls'
 TEMPLATES = [
     {
         'BACKEND':  'django.template.backends.django.DjangoTemplates',
-        'DIRS':     [],
+        'DIRS':     [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS':  {
             'context_processors': [
@@ -108,7 +109,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -127,4 +128,6 @@ STATICFILES_DIRS = [
 
 LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'main:index'
-LOGOUT_REDIRECT_URL = 'main:index'
+# LOGOUT_REDIRECT_URL = 'main:index'
+
+from .secrets import EMAIL_BACKEND, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
