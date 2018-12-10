@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from .models import Address
 from .models import Building
+from .models import Location
 from .models import SubjectArea
 from .models import Course
 
@@ -26,6 +27,13 @@ class BuildingAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Building, BuildingAdmin)
+
+
+class LocationAdmin(admin.ModelAdmin):
+    list_display = ('building', 'room')
+
+
+admin.site.register(Location, LocationAdmin)
 
 
 class SubjectAreaAdmin(admin.ModelAdmin):

@@ -30,6 +30,9 @@ class Location(models.Model):
     building = models.ForeignKey(Building, models.CASCADE)
     room = models.PositiveSmallIntegerField(unique=True)
 
+    def __str__(self):
+        return self.building.name + " " + str(self.room)
+
 
 class SubjectArea(models.Model):
     short = models.CharField(max_length=4, unique=True)
