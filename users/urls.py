@@ -2,7 +2,7 @@ from django.contrib.auth.views import LoginView, LogoutView, PasswordChangeView,
     PasswordResetCompleteView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView
 from django.urls import path, reverse_lazy
 
-from .views import register
+from .views import register, settings
 
 app_name = 'users'
 urlpatterns = [
@@ -43,4 +43,6 @@ urlpatterns = [
     path('reset/done/',
          PasswordResetCompleteView.as_view(template_name='users/reset_done.html'),
          name='password_reset_complete'),
+
+    path('settings', settings, name='settings')
 ]

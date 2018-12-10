@@ -4,9 +4,13 @@ from django.urls import reverse
 
 def navbar_context(request: HttpRequest):
     context = {
-        'pages': {
+        'pages':         {
             'Home':     reverse('main:index'),
             'Schedule': 'TODO',
+            'Bulletin': 'TODO'
+        },
+        'authenticated': {
+            'Settings': reverse('users:settings')
         }
     }
     return context
