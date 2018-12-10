@@ -33,6 +33,17 @@
                     </li>
                 {% endfor %}
                 {% if request.user.is_authenticated %}
+                    {% for name, path in authenticated.items %}
+                        <li class="nav-item">
+                            {% if request.get_full_path == path %}
+                                <a class="nav-link active" href="{{ path }}">
+                                    {{ name }} <span class="sr-only">(current)</span>
+                                </a>
+                            {% else %}
+                                <a class="nav-link" href="{{ path }}">{{ name }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
                     <li class="nav-item">
                         {% url 'users:logout' as logout %}
                         {% if request.get_full_path == logout %}
@@ -44,6 +55,17 @@
                         {% endif %}
                     </li>
                 {% else %}
+                    {% for name, path in unauthenticated.items %}
+                        <li class="nav-item">
+                            {% if request.get_full_path == path %}
+                                <a class="nav-link active" href="{{ path }}">
+                                    {{ name }} <span class="sr-only">(current)</span>
+                                </a>
+                            {% else %}
+                                <a class="nav-link" href="{{ path }}">{{ name }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
                     <li class="nav-item">
                         {% url 'users:login' as login %}
                         {% if request.get_full_path == login %}
