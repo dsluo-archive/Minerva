@@ -1,5 +1,4 @@
 from django.core.exceptions import ValidationError
-from django.core.validators import validate_comma_separated_integer_list
 from django.db import models
 
 # Create your models here.
@@ -22,19 +21,21 @@ class Building(models.Model):
 
 class Location(models.Model):
     building = models.ForeignKey(Building, models.CASCADE)
-    room = models.PositiveSmallIntegerField()
+    room = models.PositiveSmallIntegerField(unique=True)
 
 
 class SubjectArea(models.Model):
-    short = models.CharField(max_length=4)
-    long = models.CharField(max_length=255)
+    short = models.CharField(max_length=4, unique=True)
+    long = models.CharField(max_length=255, unique=True)
 
     department = None  # todo
 
 
-class Class(models.Model):
-    crn = models.CharField(primary_key=True, validators=[validate_comma_separated_integer_list], max_length=255)
+class Course(models.Model):
     subject_area = models.ManyToManyField(SubjectArea)
+    course_number = models.CharField(max_length=255)
+
+    name = models.CharField(max_length=255)
 
     lab = models.BooleanField(default=False)
     honors = models.BooleanField(default=False)
@@ -54,7 +55,7 @@ class MeetingTime(models.Model):
 
 
 class Campus(models.Model):
-    name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255, unique=True)
     location = models.ForeignKey(Location, models.CASCADE)
 
 
@@ -67,10 +68,10 @@ def validate_lowercase(value):
 
 
 class Session(models.Model):
-    klass = models.ForeignKey(Class, models.CASCADE)
+    course = models.ForeignKey(Course, models.CASCADE)
     location = models.ForeignKey(Location, models.CASCADE)
     instructor = None  # todo, nullable for instructor tbd
-    campus = None  # todo
+    campus = models.ForeignKey(Campus, models.CASCADE)
 
     # spr = spring
     # fal = fall
@@ -81,7 +82,7 @@ class Session(models.Model):
     # may = maymester
     # s1 = short session 1
     # s2 = short session 2
-    session = models.CharField(max_length=3, validators=[validate_lowercase])
+    semester = models.CharField(max_length=3, validators=[validate_lowercase])
 
     max_seats = models.PositiveSmallIntegerField()
     filled_seats = models.PositiveSmallIntegerField()
