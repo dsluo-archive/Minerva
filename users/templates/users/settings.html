@@ -1,23 +1,4 @@
-{% extends 'base/base.html' %}
-
-{% load widget_tweaks %}
-
-{% block title %}
-    Settings
-{% endblock %}
-
-{% block content %}
-    <form class="form-signin" method="post">
-        {% csrf_token %}
-
-        {% include 'forms/form_title.html' with form_title='User Settings' %}
-
-        {% include 'forms/form_errors.html' with form=settings_form %}
-        {% include 'forms/form_errors.html' with form=password_form %}
-
-        {% include 'forms/form_fields.html' with form=settings_form %}
-        {% include 'forms/form_fields.html' with form=password_form %}
-
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
-    </form>
-{% endblock %}
+{% load linkify %}
+{% url 'users:password_change' as pass_change_url %}
+{% linkify pass_change_url 'Change Password' as presubmit %}
+{% include 'users/centered_form.html' with title='User Settings' form_title='User Settings' form_submit='Save' form_presubmit=presubmit %}

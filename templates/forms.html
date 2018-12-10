@@ -7,5 +7,11 @@
     {% include 'forms/form_errors.html' %}
     {% include 'forms/form_fields.html' %}
 
+    {% if form_presubmit %}
+        <div class="form-text mb-3">
+            {{ form_presubmit|safe }}
+        </div>
+    {% endif %}
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">{{ form_submit }}</button>
 </form>
