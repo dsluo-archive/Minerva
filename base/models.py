@@ -50,6 +50,9 @@ class Course(models.Model):
     min_credit_hours = models.PositiveSmallIntegerField()
     max_credit_hours = models.PositiveSmallIntegerField(null=True)
 
+    def __str__(self):
+        return 'Course: ' + self.name
+
 
 class MeetingTime(models.Model):
     day = models.CharField(max_length=1)
