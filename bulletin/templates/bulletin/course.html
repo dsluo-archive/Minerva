@@ -1,1 +1,16 @@
-<h1>Course Page</h1>
+<body>
+    {% if error %}
+    <p>{{error}}</p>
+    {% else %}
+    <h1>{{course.name}}</h1>
+        <h2>Description</h2>
+        <h2>Flags</h2>
+            <p>Lab: {{course.lab}}</p>
+            <p>Honors: {{course.honors}}</p>
+            <p>Writing: {{course.writing}}</p>
+            <p>Service: {{course.service}}</p>
+            <p>Online: {{course.online}}</p>
+            <p>Graduate: {{course.graduate}}</p>
+        <h2>Sections</h2>
+    {% endif %}
+</body>

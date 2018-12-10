@@ -3,6 +3,8 @@ from django.shortcuts import render
 from django.db.models.functions import Lower
 
 from base.models import SubjectArea
+from base.models import Course
+
 
 # Create your views here.
 
@@ -52,29 +54,44 @@ def course(request, subject_short, course_number):
 
     # Attempt to retrieve the subject object corresponding to the value passed
     # into the function by the URL.
+    subject_object_list = SubjectArea.objects.filter(short__iexact=subject_short)
 
-    # If the subject doesn't exist...
+    if subject_object_list.count() == 0 :  # then the subject doesn't exist.
 
         # Create a dictionary with an error string.
+        error = "The requested subject doesn't exist."
+        context = {
+            'error': error
+        }
 
         # Render the template with the dictionary. Error string will be displayed.
+        return render(request, 'bulletin/course.html', context)
 
-    # Else...
+    else:  # the subject does exist.
 
         # Retrieve all Courses categorized under that Subject Area.
+        course_object_list = Course.objects.filter(subject_area__id=subject_object_list[0].id)
+        course_object_list = course_object_list.filter(course_number__iexact=course_number)
 
-        # If the course doesn't exist...
+        if course_object_list.count() == 0:  # then the course doesn't exist.
 
             # Create a dictionary with an error string.
+            error = "The requested course doesn't exist."
+            context = {
+                'error': error
+            }
 
             # Render the template with the dictionary. Error string will be
             # displayed.
+            return render(request, 'bulletin/course.html', context)
 
-        # Else...
+        else:  # the course does exist.
 
             # Create a dictionary containing the course object.
+            context = {
+                'course': course_object_list[0]
+            }
 
             # Pass the object into the template for the course view page.
-
-    return render(request, 'bulletin/course.html')
+            return render(request, 'bulletin/course.html', context)
 
