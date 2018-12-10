@@ -1,17 +1,1 @@
-{% extends 'base/base.html' %}
-
-{% load static %}
-
-{% block title %}
-    Registration
-{% endblock %}
-
-{% block appendhead %}
-    <link rel="stylesheet" href="{% static 'users/css/forms.css' %}">
-{% endblock %}
-
-{% block content %}
-    <div class="d-flex justify-content-center align-items-center h-100">
-        {% include 'forms.html' with form_title='Register' form_submit='Register' %}
-    </div>
-{% endblock %}
+{% include 'users/centered_form.html' with title='Register' form_title='Register' form_submit='Register' %}
