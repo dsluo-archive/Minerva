@@ -7,11 +7,14 @@ from django.utils.translation import gettext_lazy
 
 class Address(models.Model):
     line_one = models.CharField(max_length=255)
-    line_two = models.CharField(max_length=255)
+    line_two = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255)
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.line_one
 
 
 class Building(models.Model):

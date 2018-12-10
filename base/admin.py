@@ -1,9 +1,17 @@
 from django.contrib import admin
 
+from .models import Address
 from .models import SubjectArea
 from .models import Course
 
 # Register your models here.
+
+
+class AddressAdmin(admin.ModelAdmin):
+    list_display = ('line_one', 'line_two', 'city', 'state', 'zip_code', 'country')
+
+
+admin.site.register(Address, AddressAdmin)
 
 
 class SubjectAreaAdmin(admin.ModelAdmin):
