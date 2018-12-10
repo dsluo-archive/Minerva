@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpRequest
 from django.shortcuts import render, redirect
 
-from .forms import CustomUserCreationForm
+from users.forms import CustomUserCreationForm
 
 
 def register(request: HttpRequest):
