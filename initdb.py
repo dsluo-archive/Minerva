@@ -38,6 +38,7 @@ def create_courses():
             parsed = {
                 'course_number':    course_num,
                 'name':             course['course_title'],
+                'description':      course['course_description'],
                 'lab':              course['course_id'].endswith('L'),
                 'honors':           course['course_id'].endswith('H'),
                 'writing':          course['course_id'].endswith('W'),

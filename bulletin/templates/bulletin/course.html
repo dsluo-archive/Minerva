@@ -8,17 +8,19 @@
     {% if error %}
         <p>{{ error }}</p>
     {% else %}
-        {% for course in courses %}
-            <h1>{{ course.name }}</h1>
-            <h2>Description</h2>
-            <h2>Flags</h2>
-            <p>Lab: {{ course.lab }}</p>
-            <p>Honors: {{ course.honors }}</p>
-            <p>Writing: {{ course.writing }}</p>
-            <p>Service: {{ course.service }}</p>
-            <p>Online: {{ course.online }}</p>
-            <p>Graduate: {{ course.graduate }}</p>
-            <h2>Sections</h2>
-        {% endfor %}
+        {% with courses.first as course %}
+            <h2>{{ course.name }}</h2>
+            {% for course in courses %}
+                {{ course.display_short }}
+                {% if not forloop.last %}
+                    -
+                {% endif %}
+            {% endfor %}
+            <h3>Description</h3>
+            <p>
+                {{ course.description }}
+            </p>
+        {% endwith %}
+        <h4>Sections</h4>
     {% endif %}
 {% endblock %}
