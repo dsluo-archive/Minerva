@@ -40,9 +40,13 @@ def subject(request, subject_short):
 
     else:  # the subject does exist.
 
-        # Create a dictionary containing the subject object.
+        # Obtain a list of each course belonging to the subject.
+        list_of_courses = Course.objects.filter(subject_area__id=subject_object_list[0].id)
+
+        # Create a dictionary containing the subject object and the list of courses.
         context = {
-            'subject': subject_object_list[0]
+            'subject': subject_object_list[0],
+            'list_of_courses' : list_of_courses
         }
 
         # Pass the object into the template for the subject view page.
