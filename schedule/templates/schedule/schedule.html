@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'minerva/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'schedule/css/style.css' %}">
 <div id="main-view">
     <div id="schedule-panel">
         <table class="schedule">
@@ -242,14 +242,3 @@
 
 </script>
 {% endblock %}
-
-                        <!--test session-->
-                        <!--hour interval = 140 + 51*(hours since 8am)
-                            minute interval = (time) * (47/60)
-                        -->
-                        <div class="session" style="top: 140px; height: 39.1666666667px;">
-                            <div class="session-scheduled" style="background-color: rgb(121, 242, 121); border-color: rgb(121, 242, 121);">
-                                <div class="courseName">MATH 3300</div>
-                                <div class="location">Conner Hall 0104</div>
-                            </div>
-                        </div>
