@@ -3,13 +3,12 @@ import os
 import re
 
 import django
-from django.db import IntegrityError
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'minerva.settings')
 
 django.setup()
 
-from base.models import SubjectArea, Course, SubjectAreaCourse
+from base.models import SubjectArea, Course
 
 
 def create_subject_areas():
@@ -49,15 +48,13 @@ def create_courses():
                 'max_credit_hours': max
             }
 
-            course_model, created = Course.objects.get_or_create(**parsed)
+            course_model = Course(**parsed)
+            course_model.save()
 
             for sa in subject_areas:
                 sa = SubjectArea.objects.get(short=sa)
-                membership = SubjectAreaCourse(subject_area=sa, course=course_model)
-                try:
-                    membership.save()
-                except IntegrityError:
-                    print(membership)
+                sa.course_set.add(course_model)
+                print(repr(course_model))
 
 
 if __name__ == '__main__':
