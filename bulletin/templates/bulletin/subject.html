@@ -1,0 +1,5 @@
+{% if subject %}
+<h1>{{subject.short}} - {{ subject.long }}</h1>
+{% else %}
+<p>The requested subject does not exist.</p>
+{% endif %}
