@@ -1,0 +1,121 @@
+#main-view {
+  display: flex;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#schedule-panel {
+  width: 700px;
+}
+
+#detail-panel {
+  width: 250px;
+  padding-left: 1em;
+}
+
+.schedule {
+  border-collapse: collapse;
+  }
+
+.schedule, .schedule td, .schedule th {
+  border: 1px solid black;
+  margin: 0;
+}
+
+.schedule th {
+  height: 50px;
+  width: 123px;
+}
+
+.times-header{
+  width: 60px;
+}
+
+#times-header, .table-times {
+  text-align: right;
+  width: 65px;
+}
+
+.hour {
+  height: 50px;
+  border-top: 1px solid black;
+
+}
+
+.hour:first-child {
+  border-top: 0px
+}
+
+.session {
+  position: absolute;
+  width: 123px;
+  border-radius: .9em;
+}
+
+.courseName, .location {
+  font-size: .9em;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.session-scheduled{
+  border-radius: .25em;
+  padding: .1em;
+  height: 100%
+}
+
+.select, .dropbtn {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  height: 2em;
+  min-height: 2em;
+  max-height: 2em;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+
+
+.dropmenu {
+  display: none;
+  width: 100%;
+  border: 1px solid black;
+
+}
+
+#coursebtn {
+  display: none;
+}
+
+.search {
+  width: 100%;
+  font-size: 1em;
+}
+
+.option-list{
+  margin: 0;
+  padding: .25em;
+}
+
+.option-item {
+  width: 100%;
+  border: none;
+  padding: 5px;
+  text-align: left;
+  font-size: 1em;
+}
+
+.option-item:hover {
+  background-color: #cdcdcd;
+}
+
+
+
+.show {
+  display: block;
+}
+
