@@ -27,12 +27,7 @@ def subject(request, subject_short):
 
 def course(request, subject_short, course_number):
     try:
-        subject_area = SubjectArea.objects.get(short__iexact=subject_short)
-
-        try:
-            course = Course.objects.get(subject_area=subject_area, course_number=course_number)
-            return render(request, 'bulletin/course.html', {'course': course})
-        except Course.DoesNotExist:
-            return render(request, 'bulletin/course.html', {'error': "The requested course doesn't exist."})
-    except SubjectArea.DoesNotExist:
-        return render(request, 'bulletin/course.html', {'error': "The requested subject doesn't exist."})
+        courses = Course.objects.filter(subject_area__short__iexact=subject_short, course_number=course_number)
+        return render(request, 'bulletin/course.html', {'courses': courses})
+    except Course.DoesNotExist:
+        return render(request, 'bulletin/course.html', {'error': "The requested course doesn't exist."})
