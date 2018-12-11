@@ -6,11 +6,11 @@ def navbar_context(request: HttpRequest):
     context = {
         'pages':         {
             'Home':     reverse('main:index'),
+            'Bulletin': reverse('bulletin:index'),
             'Schedule': reverse('schedule:schedule'),
-            'Bulletin': 'TODO'
         },
         'authenticated': {
-            #'Settings': reverse('users:settings')
+            'Settings': reverse('users:settings')
         }
     }
     return context
