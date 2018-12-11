@@ -1,4 +1,5 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 # Create your models here.
@@ -90,7 +91,8 @@ class Course(models.Model):
 
 
 class MeetingTime(models.Model):
-    day = models.CharField(max_length=1)
+    # 0 is Sunday
+    day = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(6)])
     start = models.TimeField()
     end = models.TimeField()
 
