@@ -13,6 +13,13 @@ class Building(models.Model):
         return self.name
 
 
+class Campus(models.Model):
+    name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        return self.name
+
+
 class Address(models.Model):
     line_one = models.CharField(max_length=255)
     line_two = models.CharField(max_length=255, blank=True)
@@ -20,7 +27,8 @@ class Address(models.Model):
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
-    building = models.OneToOneField(Building, models.CASCADE, default='null')
+    building = models.OneToOneField(Building, models.CASCADE, null=True, blank=True)
+    campus = models.OneToOneField(Campus, models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return self.line_one
@@ -68,11 +76,6 @@ class MeetingTime(models.Model):
     day = models.CharField(max_length=1)
     start = models.TimeField()
     end = models.TimeField()
-
-
-class Campus(models.Model):
-    name = models.CharField(max_length=255, unique=True)
-    location = models.ForeignKey(Location, models.CASCADE)
 
 
 def validate_lowercase(value):
