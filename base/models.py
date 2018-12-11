@@ -49,6 +49,7 @@ class Course(models.Model):
     course_number = models.CharField(max_length=255)
 
     name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
 
     lab = models.BooleanField(default=False)
     honors = models.BooleanField(default=False)
