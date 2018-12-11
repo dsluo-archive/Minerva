@@ -73,9 +73,12 @@ class Course(models.Model):
 
 
 class MeetingTime(models.Model):
-    day = models.CharField(max_length=1)
+    days = models.CharField(max_length=6)
     start = models.TimeField()
     end = models.TimeField()
+
+    def __str__(self):
+        return self.days + ", " + str(self.start) + " - " + str(self.end)
 
 
 def validate_lowercase(value):

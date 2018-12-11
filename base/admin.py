@@ -6,6 +6,7 @@ from .models import Location
 from .models import SubjectArea
 from .models import Course
 from .models import Campus
+from .models import MeetingTime
 
 # Register your models here.
 
@@ -56,10 +57,15 @@ class CourseAdmin(admin.ModelAdmin):
 
 admin.site.register(Course, CourseAdmin)
 
+
 class CampusAdmin(admin.ModelAdmin):
     inlines = [AddressInline]
+
 
 admin.site.register(Campus, CampusAdmin)
 
 
+class MeetingTimeAdmin(admin.ModelAdmin):
+    list_display = ('days', 'start', 'end')
 
+admin.site.register(MeetingTime, MeetingTimeAdmin)
