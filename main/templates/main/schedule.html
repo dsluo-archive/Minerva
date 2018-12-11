@@ -1,0 +1,220 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'minerva/css/style.css' %}">
+<div id="main-view">
+    <div id="schedule-panel">
+        <table class="schedule">
+            <tr>
+                <th id="times-header"></th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+            </tr>
+            <tr>
+                <td>
+                    <div class="table-times">
+                        <div class="hour">
+                            <span>08:00<small> am</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>09:00<small> am</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>10:00<small> am</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>11:00<small> am</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>12:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>01:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>02:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>03:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>04:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>05:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>06:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>07:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>08:00<small> pm</small></span>
+                        </div>
+                        <div class="hour">
+                            <span>09:00<small> pm</small></span>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <!--test session-->
+                        <!--hour interval = 60 + 51*(hours since 8am)
+                            minute interval = (time) * (47/60)
+                        -->
+                        <div class="session" style="top: 60px; height: 39.1666666667px;">
+                            <div class="session-scheduled" style="background-color: rgb(121, 242, 121); border-color: rgb(121, 242, 121);">
+                                <div class="courseName">MEME - 1001</div>
+                                <div class="location">Conner Hall 0104</div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                                        <!--test session-->
+                        <!--hour interval = 60 + 51*(hours since 8am)
+                            minute interval = (time) * (47/60)
+                        -->
+                        <div class="session" style="top: 111px; height: 58.75px;">
+                            <div class="session-scheduled" style="background-color: rgb(121, 242, 121); border-color: rgb(121, 242, 121);">
+                                <div class="courseName">MEME - 1001</div>
+                                <div class="location">Conner Hall 0104</div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                        <div class="hour"></div>
+                    </div>
+                </td>
+            </tr>
+
+    </table>
+    </div>
+    <div id="detail-panel">
+        <div id= "select-subject" class="select">
+            <button id="subjectbtn" class="dropbtn" onclick="dropMenu(this.id)">Select Subject...</button>
+            <div id="subjectmenu" class="dropmenu">
+                <input class="search" placeholder="Search...";>
+                <button class="option-item" value="MATH" onclick="selectSubject(this.value)">Math</button>
+                <button class="option-item" value="ENGL" onclick="selectSubject(this.value)">English</button>
+                <button class="option-item" value="MEME" onclick="selectSubject(this.value)">Meme</button>
+            </div>
+        </div>
+        <div id= "select-course" class="select">
+            <button id="coursebtn" class="dropbtn" onclick="dropMenu(this.id)">Select Course...</button>
+            <div id="coursemenu" class="dropmenu">
+                <input class="search" placeholder="Search...";>
+                <!--these buttons should be added by templates?-->
+                <button class="option-item" value="3300" onclick="selectCourse(this.value)">Math 3300 - Linear Algebra</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function dropMenu(id) {
+      x = document.getElementById(id);
+      y = x.nextSibling.nextSibling;
+      y.classList.toggle("show");
+    }
+
+    function selectSubject(subject) {
+      s = document.getElementById("subjectmenu");
+      s.classList.toggle("show");
+      s.previousSibling.previousSibling.innerText = subject;
+      var c = document.getElementById("coursebtn");
+      c.style.display = "block";
+     }
+
+    function selectCourse(course) {
+      s = document.getElementById("subjectmenu");
+      s.previousSibling.previousSibling.innerText = "Select Subject...";
+      var c = document.getElementById("coursebtn");
+      c.style.display = "none";
+      d = document.getElementById("coursemenu");
+      d.classList.toggle("show");
+     }
+</script>
