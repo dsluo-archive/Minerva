@@ -52,11 +52,8 @@ def create_courses():
             course_model.save()
 
             for sa in subject_areas:
-                try:
-                    sa = SubjectArea.objects.get(short=sa)
-                    sa.course_set.add(course_model)
-                except SubjectArea.DoesNotExist:
-                    print(sa)
+                sa = SubjectArea.objects.get(short=sa)
+                sa.course_set.add(course_model)
 
 
 if __name__ == '__main__':
