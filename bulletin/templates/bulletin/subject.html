@@ -7,7 +7,7 @@
 {% block content %}
     {% if subject %}
         <h1>{{ subject.short }} - {{ subject.long }}</h1>
-        {% for course in list_of_courses %}
+        {% for course in courses %}
             <a href="{% url 'bulletin:course' subject_short=subject.short course_number=course.course_number %}">{{ course.course_number }} - {{ course.name }}</a><br>
         {% endfor %}
     {% else %}
