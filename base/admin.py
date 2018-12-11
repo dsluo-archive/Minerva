@@ -1,10 +1,10 @@
 from django.contrib import admin
 
 from .models import Address
-from .models import Building
+from .models import Course
 from .models import Location
 from .models import SubjectArea
-from .models import Course
+
 
 # Register your models here.
 
@@ -16,17 +16,17 @@ class AddressAdmin(admin.ModelAdmin):
 admin.site.register(Address, AddressAdmin)
 
 
-class AddressInline(admin.StackedInline):
-    model = Address
-    extra = 1
-
-
-class BuildingAdmin(admin.ModelAdmin):
-    list_display = ('number', 'name')
-    inlines = [AddressInline]
-
-
-admin.site.register(Building, BuildingAdmin)
+# class AddressInline(admin.StackedInline):
+#     model = Address
+#     extra = 1
+#
+#
+# class BuildingAdmin(admin.ModelAdmin):
+#     list_display = ('number', 'name')
+#     inlines = [AddressInline]
+#
+#
+# admin.site.register(Building, BuildingAdmin)
 
 
 class LocationAdmin(admin.ModelAdmin):
