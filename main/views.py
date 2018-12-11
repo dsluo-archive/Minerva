@@ -1,5 +1,4 @@
 from django.http import HttpRequest
-from base.views import ScheduleView
 from django.shortcuts import render
 
 
