@@ -49,8 +49,7 @@ def create_courses():
                 'max_credit_hours': max
             }
 
-            course_model = Course(**parsed)
-            course_model.save()
+            course_model, created = Course.objects.get_or_create(**parsed)
 
             for sa in subject_areas:
                 sa = SubjectArea.objects.get(short=sa)

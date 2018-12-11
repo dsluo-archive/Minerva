@@ -71,6 +71,12 @@ class SubjectAreaCourse(models.Model):
     class Meta:
         unique_together = ('subject_area', 'course')
 
+    def __repr__(self):
+        return f'SubjectAreaCourse({self.subject_area.short}, {self.course.course_number})'
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class MeetingTime(models.Model):
     day = models.CharField(max_length=1)
