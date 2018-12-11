@@ -10,7 +10,7 @@ def navbar_context(request: HttpRequest):
             'Bulletin': 'TODO'
         },
         'authenticated': {
-            'Settings': reverse('users:settings')
+            #'Settings': reverse('users:settings')
         }
     }
     return context

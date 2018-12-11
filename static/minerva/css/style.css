@@ -1,7 +1,6 @@
 #main-view {
   display: flex;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding: 2em;
 }
 
 #schedule-panel {
@@ -9,7 +8,7 @@
 }
 
 #detail-panel {
-  width: 250px;
+  width: 350px;
   padding-left: 1em;
 }
 
@@ -25,6 +24,7 @@
 .schedule th {
   height: 50px;
   width: 123px;
+  text-align: center;
 }
 
 .times-header{
@@ -48,7 +48,8 @@
 
 .session {
   position: absolute;
-  width: 123px;
+  width: 120px;
+  font-size: .9em;
   border-radius: .9em;
 }
 
@@ -80,7 +81,7 @@
 
 
 
-.dropmenu {
+.dropmenu, #select-session{
   display: none;
   width: 100%;
   border: 1px solid black;

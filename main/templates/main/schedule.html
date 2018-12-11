@@ -1,5 +1,7 @@
+{% extends 'base/base.html' %}
 {% load static %}
 
+{% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'minerva/css/style.css' %}">
 <div id="main-view">
     <div id="schedule-panel">
@@ -76,12 +78,12 @@
                         <div class="hour"></div>
                         <div class="hour"></div>
                         <!--test session-->
-                        <!--hour interval = 60 + 51*(hours since 8am)
+                        <!--hour interval = 140 + 51*(hours since 8am)
                             minute interval = (time) * (47/60)
                         -->
-                        <div class="session" style="top: 60px; height: 39.1666666667px;">
+                        <div class="session" style="top: 140px; height: 39.1666666667px;">
                             <div class="session-scheduled" style="background-color: rgb(121, 242, 121); border-color: rgb(121, 242, 121);">
-                                <div class="courseName">MEME - 1001</div>
+                                <div class="courseName">MATH 3300</div>
                                 <div class="location">Conner Hall 0104</div>
                             </div>
                         </div>
@@ -104,12 +106,12 @@
                         <div class="hour"></div>
                         <div class="hour"></div>
                                         <!--test session-->
-                        <!--hour interval = 60 + 51*(hours since 8am)
+                        <!--hour interval = 140 + 51*(hours since 8am)
                             minute interval = (time) * (47/60)
                         -->
-                        <div class="session" style="top: 111px; height: 58.75px;">
+                        <div class="session" style="top: 192px; height: 58.75px;">
                             <div class="session-scheduled" style="background-color: rgb(121, 242, 121); border-color: rgb(121, 242, 121);">
-                                <div class="courseName">MEME - 1001</div>
+                                <div class="courseName">MATH 3300</div>
                                 <div class="location">Conner Hall 0104</div>
                             </div>
                         </div>
@@ -174,6 +176,14 @@
     </table>
     </div>
     <div id="detail-panel">
+        <div id="select-session">
+            <div id="sessionmenu">
+                MATH 3300 - Linear Algebra
+                <button class="option-item" value="54365" onclick="selectSession(this.value)">8:00-9:15</button>
+                <button class="option-item" value="23413" onclick="selectSession(this.value)">1:25-2:00</button>
+                <button class="option-item" value="12423" onclick="selectSession(this.value)">3:30-4:45</button>
+            </div>
+        </div>
         <div id= "select-subject" class="select">
             <button id="subjectbtn" class="dropbtn" onclick="dropMenu(this.id)">Select Subject...</button>
             <div id="subjectmenu" class="dropmenu">
@@ -195,6 +205,7 @@
 </div>
 
 <script>
+
     function dropMenu(id) {
       x = document.getElementById(id);
       y = x.nextSibling.nextSibling;
@@ -209,6 +220,12 @@
       c.style.display = "block";
      }
 
+    function createSessionMenu(course) {
+      //AJAX and template code to generate new session menu and session entries. Below is placeholder code.
+      s = document.getElementById("select-session");
+      s.style.display = "block";
+    }
+
     function selectCourse(course) {
       s = document.getElementById("subjectmenu");
       s.previousSibling.previousSibling.innerText = "Select Subject...";
@@ -216,5 +233,23 @@
       c.style.display = "none";
       d = document.getElementById("coursemenu");
       d.classList.toggle("show");
+      createSessionMenu(course);
      }
+
+     function previewSession(cid) {
+      sessions = document.getElementsByClassName("session");
+     }
+
 </script>
+{% endblock %}
+
+                        <!--test session-->
+                        <!--hour interval = 140 + 51*(hours since 8am)
+                            minute interval = (time) * (47/60)
+                        -->
+                        <div class="session" style="top: 140px; height: 39.1666666667px;">
+                            <div class="session-scheduled" style="background-color: rgb(121, 242, 121); border-color: rgb(121, 242, 121);">
+                                <div class="courseName">MATH 3300</div>
+                                <div class="location">Conner Hall 0104</div>
+                            </div>
+                        </div>
