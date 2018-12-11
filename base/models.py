@@ -20,7 +20,7 @@ class Address(models.Model):
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
-    building = models.OneToOneField(Building, models.CASCADE, default='null')
+    building = models.OneToOneField(Building, models.CASCADE, null=True)
 
     def __str__(self):
         return self.line_one
@@ -45,7 +45,7 @@ class SubjectArea(models.Model):
 
 
 class Course(models.Model):
-    subject_area = models.ManyToManyField(SubjectArea)
+    subject_area = models.ManyToManyField(SubjectArea, through='SubjectAreaCourse')
     course_number = models.CharField(max_length=255)
 
     name = models.CharField(max_length=255)
@@ -62,6 +62,14 @@ class Course(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class SubjectAreaCourse(models.Model):
+    subject_area = models.ForeignKey(SubjectArea, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = ('subject_area', 'course')
 
 
 class MeetingTime(models.Model):
