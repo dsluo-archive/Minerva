@@ -36,7 +36,7 @@ class Location(models.Model):
 
 class SubjectArea(models.Model):
     short = models.CharField(max_length=4, unique=True)
-    long = models.CharField(max_length=255, unique=True)
+    long = models.CharField(max_length=255)
 
     department = None  # todo
 
