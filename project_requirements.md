@@ -49,8 +49,8 @@ Requirements:
                 * [ ] Student
             * [ ] Permissions
             * [x] Courses - many-to-many relationship with associated Courses
-* [ ] (5) **Back end API** to list/filter classes
-    * [ ] For Ajax on front end
+* [x] (5) **Back end API** to list/filter classes
+    * [x] For Ajax on front end
 * [ ] (10) **Admin**
     * [ ] (4) View in-demand classes
     * [ ] (4) Add/remove classes and sessions
