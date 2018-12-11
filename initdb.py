@@ -3,12 +3,13 @@ import os
 import re
 
 import django
+from django.db import IntegrityError
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'minerva.settings')
 
 django.setup()
 
-from base.models import SubjectArea, Course
+from base.models import SubjectArea, Course, SubjectAreaCourse
 
 
 def create_subject_areas():
@@ -52,11 +53,12 @@ def create_courses():
             course_model.save()
 
             for sa in subject_areas:
+                sa = SubjectArea.objects.get(short=sa)
+                membership = SubjectAreaCourse(subject_area=sa, course=course_model)
                 try:
-                    sa = SubjectArea.objects.get(short=sa)
-                    sa.course_set.add(course_model)
-                except SubjectArea.DoesNotExist:
-                    print(sa)
+                    membership.save()
+                except IntegrityError:
+                    print(membership)
 
 
 if __name__ == '__main__':
