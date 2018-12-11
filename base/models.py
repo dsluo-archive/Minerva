@@ -96,10 +96,36 @@ class MeetingTime(models.Model):
     start = models.TimeField()
     end = models.TimeField()
 
+    def __str__(self):
+        value = ""
+        if self.day == 0:
+            value += "SUN"
+        elif self.day == 1:
+            value += "MON"
+        elif self.day == 2:
+            value += "TUE"
+        elif self.day == 3:
+            value += "WED"
+        elif self.day == 4:
+            value += "THUR"
+        elif self.day == 5:
+            value += "FRI"
+        elif self.day == 6:
+            value += "SAT"
+        else:
+            value += ""
+
+        value += " " + str(self.start) + " - " + str(self.end)
+
+        return value
+
 
 class Campus(models.Model):
     name = models.CharField(max_length=255, unique=True)
     location = models.ForeignKey(Location, models.CASCADE)
+
+    def __str__(self):
+        return self.name
 
 
 def validate_lowercase(value):
@@ -131,3 +157,6 @@ class Session(models.Model):
     filled_seats = models.PositiveSmallIntegerField()
 
     meeting_times = models.ManyToManyField(MeetingTime)
+
+    def __str__(self):
+        return "CRN: " + str(self.id) + " (" + self.course.name + ")"
