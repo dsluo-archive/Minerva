@@ -1,12 +1,21 @@
+from django.http import HttpRequest
 from django.shortcuts import render
-from django.views.generic import TemplateView
-from django.views.generic.detail import DetailView
 
-# Create your views here.
+from base.util import Weekday
+from schedule.models import Schedule
 
-class ScheduleView(TemplateView):
 
-    #model = Session
-    template_name = 'schedule/schedule.html'
-    #def get_queryset(self):
-    #   return Session.objects
+def schedule(request: HttpRequest):
+    if request.user.is_authenticated:
+        schedule = Schedule.objects.get(user=request.user)
+    else:
+        schedule: Schedule = request.session.get('user', Schedule())
+        schedule.save()
+
+    sessions = list(schedule.meeting_times())
+
+    schedule = {
+        str(day): list(filter(lambda x: x.day == day, sessions)) for day in Weekday
+    }
+
+    return render(request, 'schedule/schedule.html', {'schedule': schedule})
