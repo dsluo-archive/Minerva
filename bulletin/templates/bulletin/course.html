@@ -1,16 +1,22 @@
-<body>
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Bulletin Course
+{% endblock %}
+
+{% block content %}
     {% if error %}
-    <p>{{error}}</p>
+        <p>{{ error }}</p>
     {% else %}
-    <h1>{{course.name}}</h1>
+        <h1>{{ course.name }}</h1>
         <h2>Description</h2>
         <h2>Flags</h2>
-            <p>Lab: {{course.lab}}</p>
-            <p>Honors: {{course.honors}}</p>
-            <p>Writing: {{course.writing}}</p>
-            <p>Service: {{course.service}}</p>
-            <p>Online: {{course.online}}</p>
-            <p>Graduate: {{course.graduate}}</p>
+        <p>Lab: {{ course.lab }}</p>
+        <p>Honors: {{ course.honors }}</p>
+        <p>Writing: {{ course.writing }}</p>
+        <p>Service: {{ course.service }}</p>
+        <p>Online: {{ course.online }}</p>
+        <p>Graduate: {{ course.graduate }}</p>
         <h2>Sections</h2>
     {% endif %}
-</body>
+{% endblock %}

@@ -7,7 +7,7 @@ def navbar_context(request: HttpRequest):
         'pages':         {
             'Home':     reverse('main:index'),
             'Schedule': 'TODO',
-            'Bulletin': 'TODO'
+            'Bulletin': reverse('bulletin:bulletin_index')
         },
         'authenticated': {
             'Settings': reverse('users:settings')
