@@ -5,30 +5,43 @@ from django.db import models
 from django.utils.translation import gettext_lazy
 
 
+class Building(models.Model):
+    number = models.PositiveSmallIntegerField(primary_key=True)
+    name = models.CharField(max_length=255, default='')
+
+    def __str__(self):
+        return self.name
+
+
 class Address(models.Model):
     line_one = models.CharField(max_length=255)
-    line_two = models.CharField(max_length=255)
+    line_two = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255)
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
+    building = models.OneToOneField(Building, models.CASCADE, default='null')
 
-
-class Building(models.Model):
-    number = models.PositiveSmallIntegerField(primary_key=True)
-    address = models.ForeignKey(Address, models.CASCADE)
+    def __str__(self):
+        return self.line_one
 
 
 class Location(models.Model):
     building = models.ForeignKey(Building, models.CASCADE)
     room = models.PositiveSmallIntegerField(unique=True)
 
+    def __str__(self):
+        return self.building.name + " " + str(self.room)
+
 
 class SubjectArea(models.Model):
     short = models.CharField(max_length=4, unique=True)
-    long = models.CharField(max_length=255, unique=True)
+    long = models.CharField(max_length=255)
 
     department = None  # todo
+
+    def __str__(self):
+        return self.long
 
 
 class Course(models.Model):
@@ -46,6 +59,9 @@ class Course(models.Model):
 
     min_credit_hours = models.PositiveSmallIntegerField()
     max_credit_hours = models.PositiveSmallIntegerField(null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class MeetingTime(models.Model):
