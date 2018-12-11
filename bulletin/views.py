@@ -18,7 +18,7 @@ def subject(request, subject_short):
     :param subject_short: the 4 letter subject abbreviation
     """
     try:
-        subject = SubjectArea.objects.get_or_create(short__iexact=subject_short)
+        subject = SubjectArea.objects.get(short__iexact=subject_short)
         courses = Course.objects.filter(subject_area=subject)
         return render(request, 'bulletin/subject.html', {'subject': subject, 'courses': courses})
     except SubjectArea.DoesNotExist:
