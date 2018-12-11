@@ -81,7 +81,7 @@ class Course(models.Model):
     @property
     def display_short(self):
         subject_areas = list(self.subject_area.all())
-        display_subject_area = str(subject_areas[0].short) + ''.join(f'({sa})' for sa in subject_areas[1:])
+        display_subject_area = str(subject_areas[0].short) + ''.join(f'({sa.short})' for sa in subject_areas[1:])
 
         return f'{display_subject_area} {self.course_number}{self.suffix}'
 
