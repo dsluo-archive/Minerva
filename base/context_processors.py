@@ -5,8 +5,8 @@ from django.urls import reverse
 def navbar_context(request: HttpRequest):
     context = {
         'pages':         {
-            'Bulletin': reverse('bulletin:index'),
             'Schedule': reverse('schedule:schedule'),
+            'Bulletin': reverse('bulletin:index'),
         },
         'authenticated': {
             'Settings': reverse('users:settings')
