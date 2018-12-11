@@ -20,7 +20,7 @@ class Address(models.Model):
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
-    building = models.OneToOneField(Building, models.CASCADE, default='null')
+    building = models.OneToOneField(Building, models.CASCADE, null=True)
 
     def __str__(self):
         return self.line_one
