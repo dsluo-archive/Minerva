@@ -1,8 +1,11 @@
 from rest_framework import viewsets
 
 from base.models import Course, SubjectArea, Session, Address, Building, Location, MeetingTime, Campus
+from schedule.models import Schedule
+from users.models import CustomUser
 from .serializers import CourseSerializer, SubjectAreaSerializer, SessionSerializer, AddressSerializer, \
-    BuildingSerializer, LocationSerializer, MeetingTimeSerializer, CampusSerializer
+    BuildingSerializer, LocationSerializer, MeetingTimeSerializer, CampusSerializer, ScheduleSerializer, \
+    CustomUserSerializer
 
 
 class AddressViewSet(viewsets.ReadOnlyModelViewSet):
@@ -43,3 +46,15 @@ class CampusViewSet(viewsets.ReadOnlyModelViewSet):
 class SessionViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Session.objects.all().order_by('pk')
     serializer_class = SessionSerializer
+
+
+class CustomUserViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = CustomUser.objects.all().order_by('pk')
+    serializer_class = CustomUserSerializer
+
+
+class ScheduleViewSet(viewsets.ModelViewSet):
+    queryset = Schedule.objects.all().order_by('pk')
+    serializer_class = ScheduleSerializer
+
+    # todo authentication
