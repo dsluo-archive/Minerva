@@ -1,0 +1,13 @@
+{% extends 'base/base.html' %}
+
+{% block title %}
+    Bulletin Index
+{% endblock %}
+
+{% block content %}
+    <h1>Bulletin Index</h1>
+
+    {% for subject in subjects %}
+        <a href="{% url 'bulletin:subject' subject.short %}">{{ subject.long }}</a><br>
+    {% endfor %}
+{% endblock %}
