@@ -8,7 +8,7 @@ def index(request):
     """
     Lists all subject areas
     """
-    subjects = SubjectArea.objects.order_by('long')
+    subjects = SubjectArea.objects.order_by('short')
     return render(request, 'bulletin/index.html', {'subjects': subjects})
 
 
