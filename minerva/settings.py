@@ -37,10 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'rest_framework',
     'users',
     'base',
     'main',
     'bulletin',
+    'api'
 ]
 
 MIDDLEWARE = [
@@ -131,3 +133,8 @@ LOGIN_REDIRECT_URL = 'main:index'
 # LOGOUT_REDIRECT_URL = 'main:index'
 
 from .secrets import EMAIL_BACKEND, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 100
+}

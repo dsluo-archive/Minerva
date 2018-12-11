@@ -1,16 +1,9 @@
 from django.core.exceptions import ValidationError
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 # Create your models here.
 from django.utils.translation import gettext_lazy
-
-
-class Building(models.Model):
-    number = models.PositiveSmallIntegerField(primary_key=True)
-    name = models.CharField(max_length=255, default='')
-
-    def __str__(self):
-        return self.name
 
 
 class Address(models.Model):
@@ -20,10 +13,18 @@ class Address(models.Model):
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
-    building = models.OneToOneField(Building, models.CASCADE, null=True)
 
     def __str__(self):
         return self.line_one
+
+
+class Building(models.Model):
+    number = models.PositiveSmallIntegerField(primary_key=True)
+    name = models.CharField(max_length=255, default='')
+    address = models.OneToOneField(Address, models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Location(models.Model):
@@ -90,7 +91,8 @@ class Course(models.Model):
 
 
 class MeetingTime(models.Model):
-    day = models.CharField(max_length=1)
+    # 0 is Sunday
+    day = models.PositiveSmallIntegerField(validators=[MinValueValidator(0), MaxValueValidator(6)])
     start = models.TimeField()
     end = models.TimeField()
 
