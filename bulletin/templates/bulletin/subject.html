@@ -8,7 +8,7 @@
     {% if subject %}
         <h1>{{ subject.short }} - {{ subject.long }}</h1>
         {% for course in list_of_courses %}
-            <a href="{% url 'bulletin:bulletin_course' subject_short=subject.short course_number=course.course_number %}">{{ course.course_number }} - {{ course.name }}</a><br>
+            <a href="{% url 'course' subject_short=subject.short course_number=course.course_number %}">{{ course.course_number }} - {{ course.name }}</a><br>
         {% endfor %}
     {% else %}
         <p>The requested subject does not exist.</p>

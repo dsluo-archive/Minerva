@@ -8,6 +8,6 @@
     <h1>Bulletin Index</h1>
 
     {% for subject in list_of_subjects %}
-        <a href="{% url 'bulletin:bulletin_subject' subject.short %}">{{ subject.long }}</a><br>
+        <a href="{% url 'subject' subject.short %}">{{ subject.long }}</a><br>
     {% endfor %}
 {% endblock %}
