@@ -5,14 +5,6 @@ from django.db import models
 from django.utils.translation import gettext_lazy
 
 
-class Building(models.Model):
-    number = models.PositiveSmallIntegerField(primary_key=True)
-    name = models.CharField(max_length=255, default='')
-
-    def __str__(self):
-        return self.name
-
-
 class Address(models.Model):
     line_one = models.CharField(max_length=255)
     line_two = models.CharField(max_length=255, blank=True)
@@ -20,10 +12,18 @@ class Address(models.Model):
     zip_code = models.PositiveSmallIntegerField()
     state = models.CharField(max_length=2)
     country = models.CharField(max_length=255)
-    building = models.OneToOneField(Building, models.CASCADE, null=True)
 
     def __str__(self):
         return self.line_one
+
+
+class Building(models.Model):
+    number = models.PositiveSmallIntegerField(primary_key=True)
+    name = models.CharField(max_length=255, default='')
+    address = models.OneToOneField(Address, models.CASCADE, null=True)
+
+    def __str__(self):
+        return self.name
 
 
 class Location(models.Model):
