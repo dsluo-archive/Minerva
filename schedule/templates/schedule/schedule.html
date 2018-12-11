@@ -35,8 +35,34 @@
                 </tbody>
             </table>
         </div>
-        <div class="col-lg-4 col-md-3">
-            options here
+        <div class="col-lg-4 col-md-3" id="course-pickers">
+            <div class="card mb-2" id="course-picker1" style="display: none;">
+                <div class="card-body">
+                    <div class="form-group" id="subject-area">
+                        <label for="subject-area-select">Subject Area</label>
+                        <a id="delete" href="#">
+                            <i class="material-icons red float-right">close</i>
+                        </a>
+                        <select class="form-control" id="subject-area-select"></select>
+                    </div>
+                    <div class="form-group" id="course">
+                        <label for="course-select">Course</label>
+                        <select class="form-control" id="course-select"></select>
+                    </div>
+                    <div class="form-group" id="session">
+                        <label for="session-select">Session</label>
+                        <select class="form-control" id="session-select"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="card" id="new">
+                <div class="text-center card-body p-1">
+                    add a class
+                </div>
+            </div>
         </div>
     </div>
+{% endblock %}
+{% block javascript %}
+    <script src="{% static 'schedule/js/schedule.js' %}"></script>
 {% endblock %}

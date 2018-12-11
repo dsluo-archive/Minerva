@@ -2,3 +2,7 @@
     /* this is kind of weird but it works */
     width: calc(120% / 7);
 }
+
+.material-icons.red {
+    color: red;
+}
