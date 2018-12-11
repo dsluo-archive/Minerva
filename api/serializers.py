@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
 from base.models import Course, SubjectArea, Building, Address, Location, MeetingTime, Campus, Session
+from schedule.models import Schedule
+from users.models import CustomUser
 
 
 class AddressSerializer(serializers.HyperlinkedModelSerializer):
@@ -47,6 +49,7 @@ class MeetingTimeSerializer(serializers.HyperlinkedModelSerializer):
 
 class CampusSerializer(serializers.HyperlinkedModelSerializer):
     location = LocationSerializer(read_only=True)
+    address = AddressSerializer(read_only=True)
 
     class Meta:
         model = Campus
@@ -61,4 +64,19 @@ class SessionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Session
+        fields = '__all__'
+
+
+class CustomUserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['url', 'username', 'first_name', 'last_name', 'email']
+
+
+class ScheduleSerializer(serializers.HyperlinkedModelSerializer):
+    user = CustomUserSerializer(read_only=True)
+    sessions = SessionSerializer(read_only=True, many=True)
+
+    class Meta:
+        model = Schedule
         fields = '__all__'
