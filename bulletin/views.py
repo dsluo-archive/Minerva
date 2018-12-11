@@ -25,16 +25,9 @@ def subject(request, subject_short):
         return render(request, 'bulletin/subject.html')
 
 
-def first_match(function, iterable):
-    try:
-        return next(filter(function, iterable))
-    except StopIteration:
-        return None
-
 def course(request, subject_short, course_number):
     try:
         courses = Course.objects.filter(subject_area__short__iexact=subject_short, course_number=course_number)
-        suffix = first_match(lambda x: x, )
         return render(request, 'bulletin/course.html', {'courses': courses})
     except Course.DoesNotExist:
         return render(request, 'bulletin/course.html', {'error': "The requested course doesn't exist."})

@@ -61,6 +61,30 @@ class Course(models.Model):
     min_credit_hours = models.PositiveSmallIntegerField()
     max_credit_hours = models.PositiveSmallIntegerField(null=True)
 
+    @property
+    def suffix(self):
+        suffix = ''
+
+        if self.lab:
+            suffix += 'L'
+        if self.honors:
+            suffix += 'H'
+        if self.writing:
+            suffix += 'W'
+        if self.service:
+            suffix += 'S'
+        if self.online:
+            suffix += 'E'
+
+        return suffix
+
+    @property
+    def display_short(self):
+        subject_areas = list(self.subject_area.all())
+        display_subject_area = str(subject_areas[0].short) + ''.join(f'({sa})' for sa in subject_areas[1:])
+
+        return f'{display_subject_area} {self.course_number}{self.suffix}'
+
     def __str__(self):
         return self.name
 
