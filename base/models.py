@@ -110,3 +110,6 @@ class Session(models.Model):
     filled_seats = models.PositiveSmallIntegerField()
 
     meeting_times = models.ManyToManyField(MeetingTime)
+
+    def __str__(self):
+        return "Session ID: " + str(self.id) + " (" + self.course.__str__() + ")"
