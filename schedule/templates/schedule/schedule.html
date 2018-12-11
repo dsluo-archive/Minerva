@@ -1,7 +1,7 @@
 {% extends 'base/base.html' %}
 
 {% load static %}
-{% load hours %}
+{% load times %}
 
 {% block appendhead %}
     <link rel="stylesheet" type="text/css" href="{% static 'schedule/css/style.css' %}">
@@ -14,7 +14,8 @@
                 <thead>
                 <tr>
                     <th></th>
-                    {% for day in schedule.keys %}
+                    {% days as days %}
+                    {% for day in days %}
                         <th scope="col" class="text-center col-width">{{ day }}</th>
                     {% endfor %}
 
@@ -22,10 +23,11 @@
                 </thead>
                 <tbody>
                 {% hours as hours %}
+                {% days as days %}
                 {% for hour in hours %}
                     <tr>
                         <th class="text-right">{{ hour|time:'g:i A' }}</th>
-                        {% for day in schedule.keys %}
+                        {% for day in days %}
                             <td class="col-width"></td>
                         {% endfor %}
                     </tr>
