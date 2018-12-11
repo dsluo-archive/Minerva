@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'users',
     'base',
-    'main',
     'bulletin',
     'api'
 ]
@@ -129,8 +128,8 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_URL = 'users:login'
-LOGIN_REDIRECT_URL = 'main:index'
-# LOGOUT_REDIRECT_URL = 'main:index'
+LOGIN_REDIRECT_URL = '$1[ ] '
+# LOGOUT_REDIRECT_URL = 'home'
 
 from .secrets import EMAIL_BACKEND, EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_USE_TLS
 

@@ -12,7 +12,7 @@ def register(request: HttpRequest):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('main:index')
+            return redirect('home')
     else:
         form = CustomUserCreationForm()
     return render(request, 'users/register.html', {'form': form})
