@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'base',
     'main',
     'bulletin',
+    'schedule'
 ]
 
 MIDDLEWARE = [
