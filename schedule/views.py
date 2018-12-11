@@ -7,10 +7,11 @@ from schedule.models import Schedule
 
 def schedule(request: HttpRequest):
     if request.user.is_authenticated:
-        schedule = Schedule.objects.get(user=request.user)
+        schedule = Schedule.objects.filter(user=request.user).first()  # todo: let user have multiple schedules
     else:
         schedule: Schedule = request.session.get('user', Schedule())
         schedule.save()
+        request.session['user'] = schedule
 
     sessions = list(schedule.meeting_times())
 
