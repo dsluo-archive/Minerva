@@ -1,9 +1,10 @@
 from django.core.exceptions import ValidationError
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
-
 # Create your models here.
 from django.utils.translation import gettext_lazy
+
+from .util import Weekday
 
 
 class Address(models.Model):
@@ -96,10 +97,16 @@ class MeetingTime(models.Model):
     start = models.TimeField()
     end = models.TimeField()
 
+    def __repr__(self):
+        return f'MeetingTime({Weekday(self.day)} {self.start}-{self.end})'
+
+    def __str__(self):
+        return self.__repr__()
+
 
 class Campus(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    location = models.ForeignKey(Location, models.CASCADE)
+    address = models.ForeignKey(Address, models.CASCADE, null=True)
 
 
 def validate_lowercase(value):
@@ -112,9 +119,9 @@ def validate_lowercase(value):
 
 class Session(models.Model):
     course = models.ForeignKey(Course, models.CASCADE)
-    location = models.ForeignKey(Location, models.CASCADE)
+    location = models.ForeignKey(Location, models.CASCADE, null=True)
     instructor = None  # todo, nullable for instructor tbd
-    campus = models.ForeignKey(Campus, models.CASCADE)
+    campus = models.ForeignKey(Campus, models.CASCADE, null=True)
 
     # spr = spring
     # fal = fall
