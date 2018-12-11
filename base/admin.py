@@ -1,13 +1,10 @@
 from django.contrib import admin
 
 from .models import Address
-from .models import Building
+from .models import Course
 from .models import Location
 from .models import SubjectArea
-from .models import Course
-from .models import Campus
-from .models import MeetingTime
-from .models import Session
+
 
 # Register your models here.
 
@@ -19,17 +16,17 @@ class AddressAdmin(admin.ModelAdmin):
 admin.site.register(Address, AddressAdmin)
 
 
-class AddressInline(admin.StackedInline):
-    model = Address
-    extra = 1
-
-
-class BuildingAdmin(admin.ModelAdmin):
-    list_display = ('number', 'name')
-    inlines = [AddressInline]
-
-
-admin.site.register(Building, BuildingAdmin)
+# class AddressInline(admin.StackedInline):
+#     model = Address
+#     extra = 1
+#
+#
+# class BuildingAdmin(admin.ModelAdmin):
+#     list_display = ('number', 'name')
+#     inlines = [AddressInline]
+#
+#
+# admin.site.register(Building, BuildingAdmin)
 
 
 class LocationAdmin(admin.ModelAdmin):
@@ -48,8 +45,6 @@ admin.site.register(SubjectArea, SubjectAreaAdmin)
 
 class CourseAdmin(admin.ModelAdmin):
     list_display = ('_course_subject_and_number', 'name')
-    ordering = ('subject_area', 'course_number')
-    search_fields = ('subject_area__short', 'course_number')
 
     def _course_subject_and_number(self, obj):
         value = "/".join([a.short for a in obj.subject_area.filter().order_by('short')])
@@ -59,25 +54,4 @@ class CourseAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Course, CourseAdmin)
-
-
-class CampusAdmin(admin.ModelAdmin):
-    inlines = [AddressInline]
-
-
-admin.site.register(Campus, CampusAdmin)
-
-
-class MeetingTimeAdmin(admin.ModelAdmin):
-    list_display = ('days', 'start', 'end')
-
-
-admin.site.register(MeetingTime, MeetingTimeAdmin)
-
-
-class SessionAdmin(admin.ModelAdmin):
-    raw_id_fields = ('course',)
-
-
-admin.site.register(Session, SessionAdmin)
 
