@@ -118,3 +118,6 @@ dmypy.json
 
 # secret config options
 secrets.py
+
+# staticfiles
+staticfiles/
