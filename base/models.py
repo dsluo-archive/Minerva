@@ -27,7 +27,6 @@ class Building(models.Model):
     def __str__(self):
         return self.name
 
-
 class Location(models.Model):
     building = models.ForeignKey(Building, models.CASCADE)
     room = models.PositiveSmallIntegerField(unique=True)
@@ -108,6 +107,9 @@ class Campus(models.Model):
     name = models.CharField(max_length=255, unique=True)
     address = models.ForeignKey(Address, models.CASCADE, null=True)
 
+    def __str__(self):
+        return self.name
+
 
 def validate_lowercase(value):
     if not value.islower():
@@ -138,3 +140,6 @@ class Session(models.Model):
     filled_seats = models.PositiveSmallIntegerField()
 
     meeting_times = models.ManyToManyField(MeetingTime)
+
+    def __str__(self):
+        return "CRN: " + str(self.id) + " (" + self.course.name + ")"
